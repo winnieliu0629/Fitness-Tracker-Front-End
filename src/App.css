@@ -1,38 +1,116 @@
-.App {
-  text-align: center;
+* {
+  font-family: 'Acme', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  background-color: black;
+  height: 80px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 100px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.webName {
+  color:crimson;
+  font-size: 35px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.headerLink {
+  font-size: 18px;
+  color: aliceblue;
   display: flex;
+  justify-content: space-around;
+  width: 350px;
+  margin-right: 20px;
+}
+
+.linkStyle:visited {
+color: aliceblue;
+}
+
+.panel {
+  display:flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+input {
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 20px 200px 20px 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:hover {
+  cursor: pointer;
+}
+
+.submitButton {
+  border: 1px solid black;
+  color:black;
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px 200px;
+}
+
+.createButton {
+  border: 1px solid black;
+  color:black;
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px 150px;
+}
+
+.activityButton {
+  border: 1px solid black;
+  color:black;
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px 130px;
+}
+
+.functionalButton {
+  border: 1px solid dimgray;
+  color:dimgray;
+  background-color: white;
+  border-radius: 4px;
+  padding: 8px 50px;
+  margin: 5px;
+  font-size: 15px;
+}
+
+.loginButton {
+  border: 1px solid black;
+  color:black;
+  background-color: white;
+  border-radius: 4px;
+  padding: 8px 80px;
+}
+
+.logoutButton {
+  border: 1px solid black;
+  color:black;
+  background-color: skyblue;
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+.routines {
+  width: 100vh;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.sent {
+  color: orangered;
 }

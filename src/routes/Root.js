@@ -18,7 +18,7 @@ export default function Root() {
     return (
         <div>
             <header>
-                <h2 className="webName">Stranger's Things</h2>
+                <h2 className="webName">Fitness Tracker</h2>
                 <nav className="headerLink">
                     <Link to="home" className="linkStyle">Home</Link>
                     <Link to="routines" className="linkStyle">Routines</Link>
