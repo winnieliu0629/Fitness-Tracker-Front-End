@@ -120,6 +120,10 @@ button:hover {
   border: 1px solid black;
 }
 
+.routine {
+  width: 100vh;
+}
+
 .activities {
   width: 92vh;
   margin: 10px;

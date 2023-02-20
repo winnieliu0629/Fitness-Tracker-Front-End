@@ -52,24 +52,29 @@ const SingleRoutine = () => {
     
     return (
         <>
-            <div key={id} className="routines">
+            <div key={id} className="panel">
                 <h2>{name}</h2>
-                {creatorName ? <h4>Creator Name: {creatorName}</h4> : null}
-                {goal ? <h4>Goal: {goal}</h4> : null}
-                {
-                    activities ? 
-                    <h4>Activities: {
-                        activities.map(({ id, name, description, duration, count }) => (
-                            <div key={id} className="activities">
-                                <h2>{name}</h2>
-                                {description ? <h4>Description: {description}</h4> : null}
-                                {duration ? <h4>Duration: {duration}</h4> : null}
-                                {count ? <h4>Count: {count}</h4> : null}
-                            </div>
-                        ))
-                } </h4> : null}
-                {username === creatorName ? <button onClick={() => {setIsEdited(true)}} className="functionalButton">Edit Routine</button> : null}
-                {username === creatorName ? <button onClick={callDeleteRoutine} className="functionalButton">Delete Routine</button> : null}
+                <div className="routine">
+                    {creatorName ? <h4>Creator Name: {creatorName}</h4> : null}
+                    {goal ? <h4>Goal: {goal}</h4> : null}
+                    {
+                        activities ? 
+                        <h4>Activities: {
+                            activities.map(({ id, name, description, duration, count }) => (
+                                <div key={id} className="activities">
+                                    <h2>{name}</h2>
+                                    {description ? <h4>Description: {description}</h4> : null}
+                                    {duration ? <h4>Duration: {duration}</h4> : null}
+                                    {count ? <h4>Count: {count}</h4> : null}
+                                </div>
+                            ))
+                    } </h4> : null}
+                    {username === creatorName ? <button onClick={() => {setIsEdited(true)}} className="functionalButton">Edit Routine</button> : null}
+                    {username === creatorName ? <button onClick={callDeleteRoutine} className="functionalButton">Delete Routine</button> : null}
+                </div>
+                <div>
+                    
+                </div>
             </div>
             {
                 isEdited ? 
