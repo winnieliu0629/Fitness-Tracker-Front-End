@@ -111,6 +111,13 @@ button:hover {
   border: 1px solid black;
 }
 
+.activities {
+  width: 92vh;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
 .sent {
   color: orangered;
 }

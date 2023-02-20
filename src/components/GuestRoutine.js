@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchAllRoutines } from "../api/API";
-// import GuestPostList from "./GuestPostList";
+import GuestRoutineList from "./GuestRoutineList";
 
 const GuestRoutine = () => {
     const [routines, setRoutines] = useState([]);
@@ -15,7 +15,7 @@ const GuestRoutine = () => {
     return (
         <div className="panel">
             <h1>Welcome Guest!</h1>
-            {/* <GuestRoutineList routines={routines} /> */}
+            <GuestRoutineList routines={routines} />
         </div>
     )
 };

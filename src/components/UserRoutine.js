@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from 'jwt-decode';
-// import UserPostList from "./UserPostList";
+import UserRoutineList from "./UserRoutineList";
 import { fetchAllRoutines } from "../api/API";
 
 const UserRoutine = () => {
@@ -26,7 +26,7 @@ const UserRoutine = () => {
         <div className="panel">
             <h1>Welcome {username}!</h1>
             <button onClick={navigateAddNewRoutine} className="functionalButton">Add New Routine</button>
-            {/* <UserPostList posts={posts} /> */}
+            <UserRoutineList routines={routines} />
         </div>
     )
 };

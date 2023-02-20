@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         element: <NewRoutine />,
       },
       {
-        path: "singleRoutine",
+        path: "routines/:id",
         element: <SingleRoutine />,
       },
     ],
