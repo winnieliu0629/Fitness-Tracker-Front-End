@@ -8,6 +8,7 @@ const UserRoutine = () => {
     const token = localStorage.getItem('token')
     const [routines, setRoutines] = useState([]);
     const { username } = jwt_decode(token);
+    const navigate = useNavigate();
 
     useEffect(() => {
         Promise.all([fetchAllRoutines()])
@@ -17,15 +18,10 @@ const UserRoutine = () => {
         })
     }, []);
 
-    const navigate = useNavigate();
-    const navigateAddNewRoutine = () => {
-        navigate('/newRoutine');
-    };
-
     return (
         <div className="panel">
             <h1>Welcome {username}!</h1>
-            <button onClick={navigateAddNewRoutine} className="functionalButton">Add New Routine</button>
+            <button onClick={() => navigate('/newRoutine')} className="functionalButton">Add New Routine</button>
             <UserRoutineList routines={routines} />
         </div>
     )

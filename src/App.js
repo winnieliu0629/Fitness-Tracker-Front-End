@@ -3,7 +3,6 @@ import {
   createBrowserRouter,
   RouterProvider
 } from 'react-router-dom';
-
 import Root from "./routes/Root";
 import Home from "./routes/Home";
 import Routines from "./routes/Routines";
@@ -36,13 +35,14 @@ const router = createBrowserRouter([
         element: <Activities />,
       },
       {
-        path: "routines/:activityId",
+        path: "addActivity",
         element: <AddActivity />,
       },
       {
         path: "myRoutines",
         element: <MyRoutines />,
-      },      {
+      },
+      {
         path: "register",
         element: <Register />,
       },

@@ -53,9 +53,13 @@ export async function fetchAllActivities () {
     return result;
 }
 
-export async function addNewActivity (activity) {
+export async function addNewActivity (activity, token) {
     const response = await fetch(`${BASE_URL}/activities`, {
         method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(activity)
     })
     const result = await response.json();

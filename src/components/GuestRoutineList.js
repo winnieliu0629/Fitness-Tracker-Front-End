@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom";
+
 const GuestRoutineList = ({ routines }) => {
+    const navigate = useNavigate();
+
+    const navigateSingleRoutine = (id, creatorName, name, goal, activities) => {
+        navigate(`/routines/${id}`, {state: { id, creatorName, name, goal, activities }});
+    };
+    
     return (
         <section>
             {
                 routines.map(({ id, creatorName, name, goal, activities }) => (
-                    <div key={id} className="routines">
+                    <div key={id} className="routines" onClick={() => navigateSingleRoutine(id, creatorName, name, goal, activities)}>
                         <h2>{name}</h2>
                         {goal ? <h4>Goal: {goal}</h4> : null}
                         {creatorName ? <h4>Creator: {creatorName}</h4> : null}
