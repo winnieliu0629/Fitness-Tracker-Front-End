@@ -83,9 +83,13 @@ export async function fetchAllRoutines () {
     return result;
 }
 
-export async function addNewRoutine (routine) {
+export async function addNewRoutine (routine, token) {
     const response = await fetch(`${BASE_URL}/routines`, {
         method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(routine)
     })
     const result = await response.json();

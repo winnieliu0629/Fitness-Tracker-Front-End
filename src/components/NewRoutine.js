@@ -7,6 +7,7 @@ const NewRoutine = () => {
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false);
     const [routineErrorMessage, setRoutineErrorMessage] = useState('');
+    const token = localStorage.getItem('token');
     const navigate = useNavigate();
 
     async function submitRoutine(e) {
@@ -18,7 +19,7 @@ const NewRoutine = () => {
             isPublic
         }
 
-        const response = await addNewRoutine(routine);
+        const response = await addNewRoutine(routine, token);
         console.log(response);
 
         if (!name || !goal) {
@@ -50,6 +51,7 @@ const NewRoutine = () => {
                     type="checkbox"
                     value={isPublic}
                     onChange={() => setIsPublic(!isPublic)}
+                    className="checkbox"
                 />
                 <span>Visible to all users?</span>
             </label>

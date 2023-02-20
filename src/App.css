@@ -47,7 +47,16 @@ input {
   border: 1px solid lightgrey;
   border-radius: 4px;
   margin-bottom: 20px;
-  padding: 20px 200px 20px 10px;
+  width: 300px;
+  padding: 20px 20px 20px 10px;
+}
+
+.checkbox {
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  width: 30px;
+  padding: 20px 20px 20px 10px;
 }
 
 button:hover {
