@@ -1,18 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
+import jwt_decode from 'jwt-decode';
 
-const GuestGreeting = () => {
-    const navigate = useNavigate();
-    const navigateLogin = () => {
-        navigate('/login');
-    };
-
+const UserGreeting = () => {
+    const [token, setToken] = useOutletContext();
+    const { username } = jwt_decode(token);
     return(
         <div className="panel">
-            <h2>Welcome to Fitness Tracker!</h2>
-            <h3>You are not logged in.</h3>
-            <button onClick={navigateLogin} className="loginButton">Log In</button>
+            <h1>Welcome to Fitness Tracker!</h1>
+            <h2>Logged in as {username}</h2>
         </div>
     )
 };
 
-export default GuestGreeting;
+export default UserGreeting;

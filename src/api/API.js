@@ -1,10 +1,10 @@
-const BASE_URL = "https://fitnesstrac-kr.herokuapp.com/api/";
+const BASE_URL = "https://fitnesstrac-kr.herokuapp.com/api";
 
 export async function registerUser(user) {
     const response = await fetch(`${BASE_URL}/users/register`, {
         method: "POST",
         headers: {
-        'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(user)
     })
@@ -68,7 +68,7 @@ export async function editActivity (activity, activityId) {
         body: JSON.stringify(activity)
     })
     const result = await response.json();
-    return result.data.post;
+    return result;
 }
 
 export async function fetchPublicRoutinesbyActivity (activityId) {
@@ -80,7 +80,7 @@ export async function fetchPublicRoutinesbyActivity (activityId) {
 export async function fetchAllRoutines () {
     const response = await fetch(`${BASE_URL}/routines`);
     const result = await response.json();
-    return result.data.posts;
+    return result;
 }
 
 export async function addNewRoutine (routine) {
@@ -98,7 +98,7 @@ export async function editRoutine (routine, routineId) {
         body: JSON.stringify(routine)
     })
     const result = await response.json();
-    return result.data.post;
+    return result;
 }
 
 export async function deleteRoutine (routineId, token) {

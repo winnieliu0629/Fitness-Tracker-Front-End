@@ -7,6 +7,7 @@ import {
 import Root from "./routes/Root";
 import Home from "./routes/Home";
 import Routines from "./routes/Routines";
+import Activities from "./routes/Activities";
 import MyRoutines from "./routes/MyRoutines";
 import Register from "./routes/Register";
 import Login from "./routes/Login";
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "routines",
         element: <Routines />,
+      },
+      {
+        path: "activities",
+        element: <Activities />,
       },
       {
         path: "routines/:activityId",
@@ -62,7 +67,6 @@ function App() {
   return (
     <div className="App">
       <RouterProvider router={router} /> 
-      {/* create router and pass the router to router provider */}
     </div>
   );
 }

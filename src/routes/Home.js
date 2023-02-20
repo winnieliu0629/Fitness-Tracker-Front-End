@@ -4,6 +4,7 @@ import { useOutletContext } from "react-router-dom";
 
 const Home = () => {
     const [isLoggedIn, setIsLoggedIn] = useOutletContext();
+
     if (isLoggedIn) {
         return <UserGreeting />;
     }

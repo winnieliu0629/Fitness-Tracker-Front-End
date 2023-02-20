@@ -24,23 +24,21 @@ const Register = () => {
             setConfirmPasswordErrorMessage("Passwords must match")
         }
         const user = {
-            user: {
-                username, // same as username: username
-                password
-            }
+            username,
+            password
         }
+
         const response = await registerUser(user);
-        console.log(response);
-        if (response.error) {
+        if (!response.token) {
             setUsernameErrorMessage("User already exists, please login instead.")
         } else {
-            localStorage.setItem('token', response.data.token)
-            setToken(response.data.token)
+            localStorage.setItem('token', response.token)
+            setToken(response.token)
             setIsLoggedIn(true)
         }
     }
 
-    return(
+    return (
     <div className="panel">
         <h1>Register Page</h1>
         <form onSubmit={submitRegistration}>
@@ -69,7 +67,6 @@ const Register = () => {
         </form>
     </div>
     )
-
 };
 
 export default Register;

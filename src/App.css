@@ -17,7 +17,7 @@ header {
 }
 
 .headerLink {
-  font-size: 18px;
+  font-size: 15px;
   color: aliceblue;
   display: flex;
   justify-content: space-around;
@@ -26,7 +26,7 @@ header {
 }
 
 .linkStyle:visited {
-color: aliceblue;
+color: white;
 }
 
 .panel {
@@ -97,11 +97,11 @@ button:hover {
 }
 
 .logoutButton {
-  border: 1px solid black;
-  color:black;
-  background-color: skyblue;
+  border: 1px solid white;
+  color:white;
+  background-color: black;
   border-radius: 4px;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .routines {

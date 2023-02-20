@@ -8,7 +8,7 @@ export default function Root() {
     useEffect(() => {
         setToken(localStorage.getItem('token'))
     }, [token])
-
+    
     function logout() {
        localStorage.removeItem('token');
        setToken('');
