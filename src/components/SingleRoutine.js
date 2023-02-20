@@ -25,8 +25,7 @@ const SingleRoutine = () => {
             goal: routineGoal,
         }
         
-        console.log(routineName)
-        console.log(routineGoal)
+        console.log(routine)
 
         const response = await editRoutine(routine, id);
 

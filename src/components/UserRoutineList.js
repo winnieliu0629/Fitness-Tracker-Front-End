@@ -5,7 +5,7 @@ const UserRoutineList = ({ routines }) => {
     const token = localStorage.getItem('token')
     const { username } = jwt_decode(token);
     const navigate = useNavigate();
-
+    console.log(username)
     const navigateSingleRoutine = (id, creatorName, name, goal, activities) => {
         navigate(`/routines/${id}`, {state: { id, creatorName, name, goal, activities }});
     };
