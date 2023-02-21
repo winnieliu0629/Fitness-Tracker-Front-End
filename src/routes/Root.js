@@ -1,19 +1,30 @@
 import { useState, useEffect } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import { fetchAllRoutines } from "../api/API";
 
 export default function Root() {
     const [token, setToken] =useState(localStorage.getItem('token'));
+    const [routines, setRoutines] =useState(localStorage.getItem('routines'));
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setToken(localStorage.getItem('token'))
     }, [token])
-    
+
     function logout() {
        localStorage.removeItem('token');
        setToken('');
        setIsLoggedIn(false);
+       navigate('/login');
     }
+   
+    useEffect(() => {
+        Promise.all([fetchAllRoutines()])
+        .then(([routines]) => {
+            setRoutines(localStorage.setItem('routines', JSON.stringify(routines)))
+        })
+    }, []);
 
     return (
         <div>

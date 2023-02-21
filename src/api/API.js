@@ -100,9 +100,13 @@ export async function addNewRoutine (routine, token) {
     return result;
 }
 
-export async function editRoutine (routine, routineId) {
+export async function editRoutine (routine, routineId, token) {
     const response = await fetch(`${BASE_URL}/routines/${routineId}`, {
         method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(routine)
     })
     const result = await response.json();

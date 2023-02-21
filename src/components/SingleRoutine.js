@@ -6,29 +6,27 @@ import { editRoutine, deleteRoutine } from "../api/API";
 const SingleRoutine = () => {
     const { state } = useLocation();
     const { id } = state;
-    const [thisPost, setThisPost] = useState({...state});
-    const { creatorName, name, goal, activities } = thisPost;
+    const [thisRoutine, setThisRoutine] = useState({...state});
+    const { creatorName, name, goal, isPublic, activities } = thisRoutine;
     const [isEdited, setIsEdited] = useState(false);
     const token = localStorage.getItem('token');
     const { username } = jwt_decode(token);
-    const [routineName, setRoutineName] = useState(name);
-    const [routineGoal, setRoutineGoal] = useState(goal);
+    const [editName, setEditName] = useState(name);
+    const [editGoal, setEditGoal] = useState(goal);
+    const [editIsPublic, setEditIsPublic] = useState(isPublic);
     const navigate = useNavigate();
-    console.log(username)
-    console.log(token)
 
     async function edit(e) {
         e.preventDefault()
 
         const routine = {
-            name: routineName,
-            goal: routineGoal,
+            name: editName,
+            goal: editGoal,
+            isPublic: editIsPublic
         }
+
+        const response = await editRoutine(routine, id, token);
         
-        console.log(routine)
-
-        const response = await editRoutine(routine, id);
-
         const updateRoutine = JSON.parse(
             localStorage.getItem('routines')).map((routine) => {
             if (routine.id === id) {
@@ -37,14 +35,24 @@ const SingleRoutine = () => {
                 return routine
             }
         })
+
         localStorage.setItem('routines', JSON.stringify(updateRoutine))
         setIsEdited(false);
-        setThisPost(response);
+        setThisRoutine(response);
+        navigate(`/routines`);
         return response;
     }
 
+    async function onclickEdit(e) {
+        e.preventDefault();
+        if(isEdited === true) {
+            setIsEdited(false);
+        } else {
+            setIsEdited(true);
+        }
+    }
     async function callDeleteRoutine(e) {
-        e.preventDefault()
+        e.preventDefault();
         const response = await deleteRoutine(id, token);
         navigate('/routines');
         return response;
@@ -58,7 +66,11 @@ const SingleRoutine = () => {
                     {creatorName ? <h4>Creator Name: {creatorName}</h4> : null}
                     {goal ? <h4>Goal: {goal}</h4> : null}
                     {
-                        activities ? 
+                        username === creatorName ? 
+                        isPublic ? <h4>Visible to all users? Yes</h4> : <h4>Visible to all users? No</h4> : null
+                    }
+                    {
+                        activities.length === 0 ? null :
                         <h4>Activities: {
                             activities.map(({ id, name, description, duration, count }) => (
                                 <div key={id} className="activities">
@@ -67,9 +79,10 @@ const SingleRoutine = () => {
                                     {duration ? <h4>Duration: {duration}</h4> : null}
                                     {count ? <h4>Count: {count}</h4> : null}
                                 </div>
-                            ))
-                    } </h4> : null}
-                    {username === creatorName ? <button onClick={() => {setIsEdited(true)}} className="functionalButton">Edit Routine</button> : null}
+                            ))} 
+                        </h4>
+                    }
+                    {username === creatorName ? <button onClick={onclickEdit} className="functionalButton">Edit Routine</button> : null}
                     {username === creatorName ? <button onClick={callDeleteRoutine} className="functionalButton">Delete Routine</button> : null}
                 </div>
                 <div>
@@ -82,16 +95,25 @@ const SingleRoutine = () => {
                     <h1>Edit Routine</h1>
                     <input 
                         type="text" 
-                        defaultValue={thisPost.routineName}
+                        defaultValue={thisRoutine.name}
                         placeholder="name"
-                        onChange={(e) => setRoutineName(e.target.value)}
+                        onChange={(e) => setEditName(e.target.value)}
                     />
                     <input 
                         type="text" 
-                        defaultValue={thisPost.routineGoal}
+                        defaultValue={thisRoutine.goal}
                         placeholder="goal"
-                        onChange={(e) => setRoutineGoal(e.target.value)}
+                        onChange={(e) => setEditGoal(e.target.value)}
                     />
+                    <label>
+                        <input 
+                            type="checkbox"
+                            defaultValue={thisRoutine.isPublic}
+                            onChange={() => setEditIsPublic(!thisRoutine.isPublic)}
+                            className="checkbox"
+                        />
+                        {thisRoutine.isPublic === true ? <span>Change to private</span> : <span>Change to public</span>}
+                    </label>
                     <button type="submit" className="createButton">Edit</button>
                 </form> : null
             }

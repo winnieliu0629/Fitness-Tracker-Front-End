@@ -131,6 +131,19 @@ button:hover {
   border: 1px solid black;
 }
 
+.activityLink {
+  color: blue;
+  text-decoration: underline;
+}
+
+.activityLink:hover {
+  cursor: pointer;
+}
+
+.routines:hover {
+  cursor: pointer;
+}
+
 .sent {
   color: orangered;
 }

@@ -9,13 +9,13 @@ const UserRoutineList = ({ routines }) => {
     return (
         <section>
             {
-                routines.map(({ id, creatorName, name, goal, activities }) => (
+                routines.map(({ id, creatorName, name, goal, isPublic, activities }) => (
                     <div key={id} className="routines">
-                        <div onClick={() => navigate(`/routines/${id}`, {state: { id, creatorName, name, goal, activities }})}>
+                        <div onClick={() => navigate(`/routines/${id}`, {state: { id, creatorName, name, goal, isPublic, activities }})}>
                             <h2>{name}</h2>
                             {goal ? <h4>Goal: {goal}</h4> : null}
                             {creatorName ? <h4>Creator: {creatorName}</h4> : null}
-                            {activities ? <h4 className="activityLink">Click here to see related activities</h4> : null}
+                            {activities.length === 0 ? null : <h4 className="activityLink">Click here to see related activities</h4>}
                         </div>
                         <div>
                             {
