@@ -14,7 +14,6 @@ const UserRoutine = () => {
         Promise.all([fetchAllRoutines()])
         .then(([routines]) => {
             setRoutines(routines)
-            console.log("UserRoutine", routines);
         })
     }, []);
 

@@ -13,20 +13,26 @@ const UserRoutine = () => {
         Promise.all([fetchAllActivities()])
         .then(([activities]) => {
             setActivities(activities)
-            console.log("UserRoutine", activities);
         })
     }, []);
 
     const navigate = useNavigate();
     const navigateAddNewActivity = () => {
-        navigate('/newActivity');
+        navigate('/addActivity');
     };
 
     return (
         <div className="panel">
             <h1>Welcome {username}!</h1>
             <button onClick={navigateAddNewActivity} className="functionalButton">Add New Activity</button>
-            {/* <UserPostList posts={posts} /> */}
+            {
+                activities.map(({ id, name, description }) => (
+                    <div key={id} className="routines">
+                        <h2>{name}</h2>
+                        {description ? <h4>Description: {description}</h4> : null}
+                    </div>
+                ))
+            }
         </div>
     )
 };

@@ -23,12 +23,12 @@ const AddActivity = () => {
         if (!name || !description) {
             setRoutineErrorMessage('This is required Field')
         } else {
-            navigate('/routines');
+            navigate('/activities');
         }
     }
 
     return (
-        
+
         <form onSubmit={submitActivity} className="panel">
             <h1>Add New Activity</h1>
             <input 
