@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchAllActivities } from "../api/API";
-// import GuestPostList from "./GuestPostList";
+import GuestActivityList from "./GuestActivityList";
 
 const GuestActivity = () => {
     const [activities, setActivities] = useState([]);
@@ -15,7 +15,7 @@ const GuestActivity = () => {
     return (
         <div className="panel">
             <h1>Welcome Guest!</h1>
-            {/* <GuestRoutineList routines={routines} /> */}
+            <GuestActivityList activities={activities} />
         </div>
     )
 };
