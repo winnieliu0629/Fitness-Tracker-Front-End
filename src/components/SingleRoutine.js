@@ -7,7 +7,7 @@ const SingleRoutine = () => {
     const { state } = useLocation();
     const { id } = state;
     const [thisRoutine, setThisRoutine] = useState({...state});
-    const { creatorName, name, goal, isPublic, activities } = thisRoutine;
+    const { creatorName, name, goal, isPublic, activities, description, duration, count } = thisRoutine;
     const [isEdited, setIsEdited] = useState(false);
     const token = localStorage.getItem('token');
     const { username } = jwt_decode(token);
@@ -69,6 +69,19 @@ const SingleRoutine = () => {
                         username === creatorName ? 
                         isPublic ? <h4>Visible to all users? Yes</h4> : <h4>Visible to all users? No</h4> : null
                     }
+                    {username === creatorName ? <button onClick={onclickEdit} className="functionalButton">Edit Routine</button> : null}
+                    {username === creatorName ? <button onClick={callDeleteRoutine} className="functionalButton">Delete Routine</button> : null}
+                </div>
+                <div className="routine">
+                    {
+                        creatorName === username ? 
+                        <button 
+                            onClick={() => navigate('/addActivity', {state: { id, name, description, duration, count }})}
+                            className="functionalButton"> Add Activity
+                        </button> : null
+                    }
+                </div>
+                <div>
                     {
                         activities.length === 0 ? null :
                         <h4>Activities: {
@@ -82,12 +95,7 @@ const SingleRoutine = () => {
                             ))} 
                         </h4>
                     }
-                    {username === creatorName ? <button onClick={onclickEdit} className="functionalButton">Edit Routine</button> : null}
-                    {username === creatorName ? <button onClick={callDeleteRoutine} className="functionalButton">Delete Routine</button> : null}
-                </div>
-                <div>
-                    
-                </div>
+                </div> 
             </div>
             {
                 isEdited ? 

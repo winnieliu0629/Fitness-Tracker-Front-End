@@ -127,8 +127,8 @@ export async function deleteRoutine (routineId, token) {
     return;
 }
 
-export async function addNewActivitytoRoutine (activity, activityId) {
-    const response = await fetch(`${BASE_URL}/routines/${activityId}/activities`, {
+export async function addNewActivitytoRoutine (activity, routineId) {
+    const response = await fetch(`${BASE_URL}/routines/${routineId}/activities`, {
         method: "POST",
         body: JSON.stringify(activity)
     })

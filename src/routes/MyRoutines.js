@@ -13,7 +13,6 @@ const MyRoutines = () => {
             setUserRoutine(userRoutine)
         })
     }, []);
-    console.log(userRoutine)
 
     return(
         <div className="panel">

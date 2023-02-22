@@ -6,8 +6,8 @@ import { fetchAllActivities } from "../api/API";
 
 const UserRoutine = () => {
     const token = localStorage.getItem('token')
-    const [activities, setActivities] = useState([]);
     const { username } = jwt_decode(token);
+    const [activities, setActivities] = useState([]);
 
     useEffect(() => {
         Promise.all([fetchAllActivities()])
